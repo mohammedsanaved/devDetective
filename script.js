@@ -38,6 +38,24 @@ const twitter = get("twitter");
 const company = get("company");
 let darkMode = false;
 
+// Create a loader element
+const loader = document.createElement("div");
+loader.id = "loader";
+loader.classList.add("loader");
+
+// Add the loader to the DOM
+document.body.appendChild(loader);
+
+// Show the loader when the page is refreshed
+window.addEventListener("beforeunload", () => {
+  loader.style.display = "block";
+});
+
+// Hide the loader after the page has loaded
+window.addEventListener("load", () => {
+  loader.style.display = "none";
+});
+
 // Event Listeners
 btnsubmit.addEventListener("click", function () {
   if (input.value !== "") {
@@ -124,7 +142,11 @@ function updateProfile(data) {
       : "Not Available";
     searchbar.classList.toggle("active");
     profilecontainer.classList.toggle("active");
+    const loader = document.getElementById("loader");
+    loader.style.display = "none";
   } else {
+    const loader = document.getElementById("loader");
+    loader.style.display = "none";
     noresults.style.display = "block";
   }
 }
