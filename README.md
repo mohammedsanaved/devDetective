@@ -1,2 +1,2 @@
 # Dev-Detective
-Search the github- user
+Search the GitHub- user
